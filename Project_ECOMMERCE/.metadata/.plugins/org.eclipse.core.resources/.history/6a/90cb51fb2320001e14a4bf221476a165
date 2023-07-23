@@ -1,0 +1,41 @@
+package com.masai.Service;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.CustomersException;
+import com.masai.Model.Customers;
+
+@Service
+public class CustomerServiceImpl implements CustomerService{
+
+	@Override
+	public Customers registerCustomer(Customers customer) throws CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customers getCustomerById(int cid) throws CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customers getAllCustomers() throws CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customers updateCustomer(int cid) throws CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customers deleteCustomer(int cid) throws CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

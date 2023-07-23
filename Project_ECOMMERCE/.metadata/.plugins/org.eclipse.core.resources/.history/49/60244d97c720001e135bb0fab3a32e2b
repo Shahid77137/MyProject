@@ -1,0 +1,64 @@
+package com.masai.Model;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Products {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int productId;
+	private String productBrand;
+	private String productName;
+	private String productType;
+	private double salePrice;
+	private double markedPrice;
+	private double discountPercentage;
+	private int quantity;
+	private boolean isAvailable;
+	private LocalDate manufacturedDate;
+	private double rating;
+	private String description;
+	private int totalSold;
+	@CreationTimestamp
+	private LocalDateTime productCreatedDate;
+	@UpdateTimestamp
+	private LocalDateTime productUpdatedDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "categoryId")
+	private Category category;
+	
+	@OneToMany
+	@JoinColumn(name = "orderId")
+	private List<Orders> orders;
+	
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "cartId")
+	private Cart cart;
+	
+}

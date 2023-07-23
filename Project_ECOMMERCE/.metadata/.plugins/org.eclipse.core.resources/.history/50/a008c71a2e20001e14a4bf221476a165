@@ -1,0 +1,15 @@
+package com.masai.Service;
+
+import java.util.List;
+
+import com.masai.Exception.ProductsException;
+import com.masai.Model.Products;
+
+public interface ProductsService {
+
+	public Products addProduct(Products product)throws ProductsException;
+ 	public Products getProductById(int prodId)throws ProductsException;
+ 	public List<Products> getAllProducts()throws ProductsException;
+ 	public Products updateProduct(int prodId)throws ProductsException;
+ 	public Products deleteProduct(int prodId)throws ProductsException;
+}

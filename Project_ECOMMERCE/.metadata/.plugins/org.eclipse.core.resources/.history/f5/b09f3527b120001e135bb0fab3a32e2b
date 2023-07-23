@@ -1,0 +1,72 @@
+package com.masai.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.masai.Exception.CategoryException;
+import com.masai.Exception.CustomersException;
+import com.masai.Model.Category;
+import com.masai.Model.Customers;
+import com.masai.Service.CategoryService;
+import com.masai.Service.CustomerService;
+
+@RestController
+@RequestMapping("/customer")
+@CrossOrigin("*")
+public class CustomerController {
+
+	@Autowired
+	public CustomerService customerService;
+	
+	
+	@PostMapping("/addCategory")
+	public ResponseEntity<Customers> registerCustomer(Customers customer)throws CustomersException{
+		Customers cat = customerService.registerCustomer(customer);
+		return new ResponseEntity<>(cat,HttpStatus.CREATED);
+	}
+	
+	
+	@GetMapping("/getAllProductsByCategoryId/{catid}")
+	public ResponseEntity<Customers> getCustomerById(int cid)throws CustomersException{
+		
+		Customers cat = customerService.getCustomerById(cid);
+		return new ResponseEntity<>(cat,HttpStatus.OK);
+	}
+	
+	
+	
+	@PutMapping("/updateCategoryById/{catId}")
+	public ResponseEntity<Customers> updateCustomer(int cid,Customers customer)throws CustomersException{
+		Customers cat = customerService.updateCustomer(cid, customer);
+		return new ResponseEntity<>(cat,HttpStatus.OK);
+	}
+	
+	
+	
+	@DeleteMapping("/deleteCategoryById/{catId}")
+	public ResponseEntity<Customers> deleteCustomer(int cid)throws CustomersException{
+		Customers cat = customerService.deleteCustomer(cid);
+		return new ResponseEntity<>(cat,HttpStatus.OK);
+		
+	}
+	
+	
+	@GetMapping("/getAllCategory")
+	public ResponseEntity<List<Customers>> getAllCustomers()throws CustomersException{
+		List<Customers> list = customerService.getAllCustomers();
+		return new ResponseEntity<>(list,HttpStatus.OK);
+	}
+	
+}

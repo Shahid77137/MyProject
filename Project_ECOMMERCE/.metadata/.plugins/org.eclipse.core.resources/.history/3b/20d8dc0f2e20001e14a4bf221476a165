@@ -1,0 +1,43 @@
+package com.masai.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.PaymentsException;
+import com.masai.Model.Payments;
+
+@Service
+public class PaymentsServiceImpl implements PaymentsService{
+
+	@Override
+	public Payments createPayements(Payments payments) throws PaymentsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Payments getPaymentsById(int payid) throws PaymentsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Payments> getAllPayments() throws PaymentsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Payments updatePayments(int payid) throws PaymentsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Payments deletePayments(int payid) throws PaymentsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,43 @@
+package com.masai.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.CategoryException;
+import com.masai.Model.Category;
+
+@Service
+public class CategoryServiceImpl implements CategoryService{
+
+	@Override
+	public Category addCategory(int catId) throws CategoryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category getAllProductsByCategoryId(int catid) throws CategoryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category updateCategoryById(int catId) throws CategoryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category deleteCategoryById(int catId) throws CategoryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Category> getAllCategory() throws CategoryException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

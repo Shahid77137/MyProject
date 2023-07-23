@@ -1,0 +1,43 @@
+package com.masai.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.OrdersException;
+import com.masai.Model.Orders;
+
+@Service
+public class OrdersServiceImpl implements OrdersService{
+
+	@Override
+	public Orders createOrder(Orders order) throws OrdersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Orders getOrderById(int oid) throws OrdersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Orders> getAllOrders() throws OrdersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Orders updateOrders(int oid) throws OrdersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Orders deleteOrders(int oid) throws OrdersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

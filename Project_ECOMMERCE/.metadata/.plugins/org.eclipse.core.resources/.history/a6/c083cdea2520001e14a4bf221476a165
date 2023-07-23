@@ -1,0 +1,43 @@
+package com.masai.Service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.FeedbackException;
+import com.masai.Model.Feedback;
+
+@Service
+public class FeedbackServiceImpl implements FeedbackService{
+
+	@Override
+	public Feedback addFeedback(Feedback feedback) throws FeedbackException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Feedback getFeedbackById(int fid) throws FeedbackException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Feedback> getAllFeedback() throws FeedbackException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Feedback updateFeedback(int fid) throws FeedbackException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Feedback deleteFeedback(int fid) throws FeedbackException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,38 @@
+package com.masai.Service;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.CartException;
+import com.masai.Exception.ProductsException;
+import com.masai.Model.Cart;
+import com.masai.Model.Products;
+
+@Service
+public class CartServiceImpl implements CartService{
+
+	@Override
+	public Products addProductToCart(int pid, int quantity, int cid) throws ProductsException, CartException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Products updateCartproductByQuantity(int newquantity, int pid, int cid)
+			throws ProductsException, CartException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Products deleteProductfromCart(int pid, int cid) throws ProductsException, CartException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cart getCartById(int cid) throws CartException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.masai.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.masai.Model.Customers;
+import com.masai.Model.Products;
+@Repository
+public interface ProductRepository extends JpaRepository<Products, Integer>{
+
+	@Query("SELECT p FROM Products p WHERE p.productName = ?1")
+    public List<Products> findByName(String productName);
+	
+	public List<Products> findByBrand(String productBrand);
+
+	public List<Products> findByType(String productType);
+	
+	public List<Products> findByRating(double rating);
+	
+//	public List<Products> findByisAvailable(boolean isAvailable);
+	
+	
+
+	
+	
+	
+}

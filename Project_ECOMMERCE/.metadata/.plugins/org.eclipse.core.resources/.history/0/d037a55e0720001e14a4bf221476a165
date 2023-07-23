@@ -1,0 +1,58 @@
+package com.masai.Service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.AddressException;
+import com.masai.Exception.CustomersException;
+import com.masai.Model.Address;
+import com.masai.Repository.AddressRepository;
+
+@Service
+public class AddressServiceImpl implements AddressService{
+
+	@Autowired
+	private AddressRepository addressRepository;
+	
+	@Override
+	public Address addAddress(Address address) throws AddressException {
+        
+		if(addressRepository.existsById(address.getAddressId())) {
+			throw new AddressException("Address alreday exists");
+		}else {
+			return addressRepository.save(address);
+		}
+		
+
+	}
+
+	@Override
+	public Address getAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		
+		Optional<Address> address = addressRepository.findById(cid);
+		
+		if(address.isEmpty()) {
+			throw new AddressException("Address not found");
+		}else {
+			return address;
+		}
+		
+		
+//		return null;
+	}
+
+	@Override
+	public Address updateAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address deleteAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

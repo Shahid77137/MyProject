@@ -1,0 +1,36 @@
+package com.masai.Service;
+
+import org.springframework.stereotype.Service;
+
+import com.masai.Exception.AddressException;
+import com.masai.Exception.CustomersException;
+import com.masai.Model.Address;
+
+@Service
+public class AddressServiceImpl implements AddressService{
+
+	@Override
+	public Address addAddress() throws AddressException {
+
+		return null;
+	}
+
+	@Override
+	public Address getAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address updateAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address deleteAddressByCustomerId(int cid) throws AddressException, CustomersException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
