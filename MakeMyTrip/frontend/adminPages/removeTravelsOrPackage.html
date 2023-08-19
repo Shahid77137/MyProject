@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Remove Travels and Package</title>
+  <link rel="stylesheet" href="../adminPagesCSS/removeTravelsOrPackage.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="column">
+      <h1>Remove Travels</h1>
+      <form method="POST" action="#">
+        <label for="Travels-id">Travels ID:</label>
+        <input type="text" id="Travels-id" name="Travels-id" required><br><br>
+        <button type="submit" onclick="kkk()">Submit</button>
+      </form>
+    </div>
+
+    <div class="column">
+      <h1>Package Travels</h1>
+      <form method="POST" action="#">
+        <label for="Package-id">Package ID:</label>
+        <input type="text" id="Package-id" name="Package-id" required><br><br>
+        <button type="submit" onclick="kkk2()">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+function kkk(params) {
+	event.preventDefault();
+	let id = document.getElementById("Travels-id").value;
+	console.log(id);
+	console.log("hello " + id);
+
+	Swal.fire({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			Swal.fire(
+				'Deleted!',
+				'Your file has been deleted.',
+				'success'
+			)
+		}
+		fetch(`http://localhost:8080/deleteTravel/${id}`, {
+			method: "DELETE"
+		}).then(response => {
+			response.json().then(data => {
+				alert("Travel sucessfully deleted: ");
+
+			});
+		})
+		window.location.reload();
+
+	})
+
+}
+
+function kkk2(params) {
+	event.preventDefault();
+	let id = document.getElementById("Package-id").value;
+	console.log(id);
+	console.log("hello " + id);
+
+	Swal.fire({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			Swal.fire(
+				'Deleted!',
+				'Your file has been deleted.',
+				'success'
+			)
+		}
+		fetch(`http://localhost:8080/deleteTravel/${id}`, {
+			method: "DELETE"
+		}).then(response => {
+			response.json().then(data => {
+				alert("Package sucessfully deleted: ");
+
+			});
+		})
+		window.location.reload();
+
+	})
+
+}
+</script>

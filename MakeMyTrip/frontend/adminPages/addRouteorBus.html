@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Route and Bus Management</title>
+  <link rel="stylesheet" href="../adminPagesCSS/addRouteorBus.css">
+
+ 
+   
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="column">
+      <h2>Add Route</h2>
+
+      <form id="add-route-form">
+        <label for="route-from">Route From:</label>
+        <input type="text" id="route-from" name="route-from" class="form-route">
+        <br>
+        <label for="route-to">Route To:</label>
+        <input type="text" id="route-to" name="route-to" class="form-route">
+        <br>
+        <label for="departure-time">Departure Time:</label>
+        <input type="time" id="departure-time" name="departure-time" class="form-route">
+        <br>
+        <label for="arrival-time">Arrival Time:</label>
+        <input type="time" id="arrival-time" name="arrival-time" class="form-route">
+        <br>
+        <label for="date-of-journey">Date of Journey:</label>
+        <input type="date" id="date-of-journey" name="date-of-journey" class="form-route">
+        <br>
+        <label for="pickup-point">Pickup Point:</label>
+        <input type="text" id="pickup-point" name="pickup-point" class="form-route">
+        <br>
+        <label for="fare">Fare:</label>
+        <input type="number" id="fare" name="fare" class="form-route">
+        <br>
+        <label for="no-of-buses">No of Buses:</label>
+        <input type="number" id="no-of-buses" name="no-of-buses" class="form-route">
+        <br>
+        <button type="submit" id="add-route-btn" class="form-btn" onclick="registerRoute()">Add Route</button>
+      </form>
+    </div>
+
+    <div class="column">
+      <h2>Add Bus</h2>
+
+      <form id="add-bus-form">
+        <label for="bus-name">Bus Name:</label>
+        <input type="text" id="bus-name" name="bus-name" class="form-bus">
+        <br>
+        <label for="bus-type">Bus Type:</label>
+        <input type="text" id="bus-type" name="bus-type" class="form-bus">
+        <br>
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" min="0" class="form-bus">
+        <br>
+        <button type="submit" id="add-bus-btn" class="form-btn" onclick="registerBus()">Add Bus</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  function registerRoute() {
+		event.preventDefault();
+
+		let routeFrom = document.getElementById("route-from").value;
+		let routeTo = document.getElementById("route-to").value;
+		let departureTime = document.getElementById("departure-time").value;
+		let arrivalTime = document.getElementById("arrival-time").value;
+		let dateOfJourney = document.getElementById("date-of-journey").value;
+		let pickupPoint = document.getElementById("pickup-point").value;
+		let fare = document.getElementById("fare").value;
+		let noOfBuses = document.getElementById("no-of-buses").value;
+
+		fetch("http://localhost:8080/routes", {
+		    method: "POST",
+		    headers: {
+		        "content-type": "application/json"
+		    },
+		    body: JSON.stringify({
+		        "routeFrom": routeFrom,
+		        "routeTo": routeTo,
+		        "departureTime": departureTime,
+		        "arrivalTime": arrivalTime,
+		        "doj" : dateOfJourney,
+		        "pickupPoint" : pickupPoint,
+		        "fare" : fare
+		    })
+		}).then(response => {
+		    response.json().then(data => {
+		        alert("Route sucessfully Added with ID: " + data.routeId);
+		    });
+		})
+
+  }
+
+  function registerBus() {
+		event.preventDefault();
+
+		let busName = document.getElementById("bus-name").value;
+		let busType = document.getElementById("bus-type").value;
+		let capacity = document.getElementById("capacity").value;
+	
+
+		fetch("http://localhost:8080/bus", {
+		    method: "POST",
+		    headers: {
+		        "content-type": "application/json"
+		    },
+		    body: JSON.stringify({
+		        "busName": busName,
+		        "busType": busType,
+		        "capacity": capacity
+		        
+		    })
+		}).then(response => {
+		    response.json().then(data => {
+		        alert("Route sucessfully Added with ID: " + data.busId);
+		    });
+		})
+
+  }
+</script>

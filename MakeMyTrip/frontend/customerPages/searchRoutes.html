@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/searchRoutes.css">
+  <title>Search Routes</title>
+</head>
+<body>
+  <div>
+    <h1>Search Routes between to places</h1>
+    <form>
+      <label for="pickup-point">Enter Pickup Point:</label>
+			<input type="text" id="pickup-point" name="pickup-point" required><br><br>
+      <label for="drop-point">Enter Drop Point:</label>
+			<input type="text" id="drop-point" name="drop-point" required><br><br>
+			<div>
+				<button id="btnn" type="submit">Submit</button>
+			</div>
+    </form>
+  </div>
+  <!--  this should stay hidden until there is data to show or append in the table, make sure to add required css and js for this
+  css -- diksha and js -- aman -->
+  <div class="results">
+		<h2>Route</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th id="route_id">ID</th>
+					<th id="arrival_time">Arrival Time</th>
+					<th id="departure_time">Departure Time</th>
+					<th id="doj">Date of Journey</th>
+					<th id="fare">Fare</th>
+					<th id="pickup_point">Pickup Point</th>
+					<th id="route_from">Route From</th>
+					<th id="route_to">Route To</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="route_id">1</td>
+					<td class="arrival_time">10:00 AM</td>
+					<td class="departure_time">11:00 AM</td>
+					<td class="doj">2023-05-15</td>
+					<td class="fare">1000</td>
+					<td class="pickup_point">Central Station</td>
+					<td class="route_from">New York</td>
+					<td class="route_to">Los Angeles</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

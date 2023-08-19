@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Remove Route</title>
+	<link rel="stylesheet" href="../adminPagesCSS/removeRouteorBus.css">
+</head>
+
+<body>
+	<div class="form">
+		<h1>Remove Route</h1>
+		<form method="POST" action="#">
+			<label for="Route-id">Route ID:</label>
+			<input type="text" id="Route-id" name="Route-id" required><br><br>
+			<button type="submit" onclick="kkk()">Submit</button>
+		</form>
+	</div>
+</body>
+
+</html>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+function kkk(params) {
+	event.preventDefault();
+	let id = document.getElementById("Route-id").value;
+	console.log(id);
+	console.log("hello " + id);
+
+	Swal.fire({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			Swal.fire(
+				'Deleted!',
+				'Your file has been deleted.',
+				'success'
+			)
+		}
+		fetch(`http://localhost:8080/routes/${id}`, {
+			method: "DELETE"
+		}).then(response => {
+			response.json().then(data => {
+				alert("Routes sucessfully deleted: ");
+
+			});
+		})
+		window.location.reload();
+
+	})
+
+}
+</script>

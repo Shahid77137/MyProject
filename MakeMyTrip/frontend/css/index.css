@@ -1,0 +1,40 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 1rem;
+  overflow-y: hidden;
+  background: linear-gradient(to bottom, #00b4db, #0083b0);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.login-links {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  justify-content: center;
+}
+
+a, p {
+  text-decoration: none;
+  color: #333;
+  padding: 1rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #EEE;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+a:hover, p:hover {
+  background-color: #DDD;
+  cursor: pointer;
+}

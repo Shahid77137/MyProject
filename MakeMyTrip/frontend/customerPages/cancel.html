@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/cancel.css">
+  <title>Cancel Ticket</title>
+</head>
+
+<body>
+  <div class="cancel-ticket">
+    <h1>Cancel Ticket</h1>
+    <form method="POST" action="#">
+      <label for="ticket-id">Enter Ticket Id: </label>
+      <input type="text" id="ticket-id" name="ticket-id" required><br><br>
+      <label for="booking-id">Enter Booking Id: </label>
+      <input type="text" id="booking-id" name="booking-id" required><br><br>
+
+      <!-- once customer clicks on submit remove both the booking and ticket with inputed id
+        do it in js: id @Amanastel -->
+      <div id="btn">
+        <input id="color" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+
+<script>
+  const form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const ticketId = document.getElementById('ticket-id').value;
+  const bookingId = document.getElementById('booking-id').value;
+
+  fetch(`http://localhost:8080/tickets/remove/ticket/${ticketId}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Incorrect Ticket Id');
+      }
+      return fetch(`http://localhost:8080/remove/booking/${bookingId}`);
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Incorrect Booking Id');
+      }
+      alert(`Booking and ticket with IDs ${bookingId} and ${ticketId} have been deleted.`);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+});
+
+
+</script>

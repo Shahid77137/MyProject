@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/book.css">
+  <title>Booking Ticket</title>
+</head>
+
+<body>
+  <div class="form">
+    <h2><u>Booking Form</u> </h2>
+    <form>
+      <label for="bookingDate">Booking Date:</label>
+      <input type="date" id="bookingDate" name="bookingDate"><br>
+
+      <!-- booking name would be same as package name -->
+      <label for="bookingTitle">Package name:</label>
+      <input type="text" id="bookingTitle" name="bookingTitle"><br>
+
+      <label for="bookingType">Booking Type:</label>
+      <select id="bookingType" name="bookingType">
+        <option value="hotel">Hotel</option>
+      </select><br>
+
+      <label for="packageId">Package ID:</label>
+      <input type="text" id="packageId" name="packageId"><br>
+
+      <!-- Once customer clicks on submit, create a ticket and put status pending, and show an 
+        alert message with ticket id, and booking id, with status: Waiting for confirmation from hotel
+      do it in js: @Amanastel -->
+      <div id="btn">
+        <input id="color" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+
+<script>
+  document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let bookingDate = document.getElementById('bookingDate').value;
+    let bookingTitle = document.getElementById('bookingTitle').value;
+    let bookingType = document.getElementById('bookingType').value;
+    let packageId = document.getElementById('packageId').value;
+
+    let bId;
+
+    fetch('http://localhost:8080/search/' + packageId)
+      .then(response => response.json())
+      .then(data => {
+        fetch('http://localhost:8080/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            bookingDate: bookingDate,
+            bookingTitle: bookingTitle,
+            bookingType: bookingType,
+            description: 'Booking for Hotel'
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            bId = data.bookingId;
+          })
+          .catch(error => {
+            console.error(error);
+            alert('Error creating ticket');
+          });
+        
+        fetch('http://localhost:8080/tickets/new', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            status: 'PENDING'
+          }).then(response => response.json()).then(data => {
+            
+          })
+        })
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Error creating ticket');
+      });
+  });
+
+</script>

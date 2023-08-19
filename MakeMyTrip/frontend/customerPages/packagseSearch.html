@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/packagseSearch.css">
+  <title>Search Packages</title>
+</head>
+
+<body>
+  <div class="form">
+    <h1>Search Package</h1>
+    <form method="POST" action="#">
+      <label for="package-name">Enter Package name:</label>
+      <input type="text" id="package-name-input" name="package-name" required><br><br>
+      <div>
+        <button id="btnn" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- this div should be visible when there is data to show or append after searching, add required js and css
+  js --- aman, css --- diksha -->
+  <div class="results">
+    <h2>Package Information</h2>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Package Name</th>
+          <th>Package Type</th>
+          <th>Payment Cost</th>
+          <th>Amount</th>
+          <th>Gateway</th>
+          <th>Payment Type</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+<script>
+  const form = document.querySelector('form');
+  const resultsDiv = document.querySelector('.results');
+  const table = document.querySelector('table tbody');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const packageName = document.querySelector('#package-name-input').value;
+
+    try {
+      // Replace 'API_URL' with the actual API endpoint URL
+      const response = await fetch(`http://localhost:8080/search/${packageName}`);
+      const data = await response.json();
+
+      if (data.length === 0) {
+        resultsDiv.style.display = 'none';
+        alert('No packages found!');
+        return;
+      }
+
+      table.innerHTML = '';
+      data.forEach(package => {
+        const row = table.insertRow();
+        row.innerHTML = `
+        <td class="package-id">${package.id}</td>
+        <td class="description">${package.description}</td>
+        <td class="package-name">${package.name}</td>
+        <td class="package-type">${package.type}</td>
+        <td class="payment-cost">${package.paymentCost}</td>
+        <td class="amount">${package.amount}</td>
+        <td class="gate-way">${package.gateway}</td>
+        <td class="payment-type">${package.paymentType}</td>
+      `;
+      });
+
+      resultsDiv.style.display = 'block';
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  });
+
+</script>

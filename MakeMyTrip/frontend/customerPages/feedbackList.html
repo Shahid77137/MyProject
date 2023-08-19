@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Feedback Table</title>
+  <link rel="stylesheet" href="../css/feedbackList.css">
+  </style>
+</head>
+<!-- fetch the feedback for the user who is logged in @Amanastel -->
+<body>
+  <div class="feedback-table">
+    <h2>Feedback Table</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th class="col">Feedback ID</th>
+          <th class="col">Feedback Message</th>
+          <th class="col">Rating</th>
+          <th class="col">Submit Date</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+
+<script>
+const apiUrl = `http://localhost:8080/feedback/feedbacks`;
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(feedbackData => {
+    const tbody = document.querySelector('#tbody');
+    feedbackData.forEach(feedback => {
+      console.log(feedback)
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="col" id="feedback-id">${feedback.feedbackId}</td>
+        <td class="col" id="feedback-message">${feedback.feedback}</td>
+        <td class="col" id="feedback-rating">${feedback.rating}/5</td>
+        <td class="col" id="feedback-date">${feedback.submitDate}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(error => console.error('Error fetching feedback:', error));
+
+</script>

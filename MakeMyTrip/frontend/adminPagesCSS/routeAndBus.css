@@ -1,0 +1,75 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    overflow-y: hidden;
+    background:  #00b4db;
+    
+  }
+  .heading {
+    padding:.5em;
+    text-align: center;
+
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* Container styles */
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+  }
+  
+  /* Link styles */
+  a {
+    display: inline-block;
+    padding: 1rem;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Add link styles */
+  #add-link {
+    margin-bottom: 1rem;
+  }
+  
+  .add {
+    background-color: #0f0;
+    border-color: #0f0;
+    color: #fff;
+  }
+  
+  .add:hover {
+    background-color: #060;
+    border-color: #060;
+  }
+  
+  /* Remove link styles */
+  #remove-link {
+    margin-top: 1rem;
+  }
+  
+  .remove {
+    background-color: #f00;
+    border-color: #f00;
+    color: #fff;
+  }
+  
+  .remove:hover {
+    background-color: #600;
+    border-color: #600;
+  }

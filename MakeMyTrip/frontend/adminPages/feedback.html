@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../adminPagesCSS/feedback.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="submit-feedback.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea>
+        
+        <input type="submit" value="Submit" onclick="registerFeedback()">
+      </form>
+      
+      <div class="success-message">
+        Thank you for your feedback!
+      </div>
+
+</body>
+</html>
+
+<script>
+   function registerFeedback() {
+		event.preventDefault();
+
+		let name = document.getElementById("name").value;
+		let email = document.getElementById("email").value;
+		let feedback = document.getElementById("feedback").value;
+	
+
+	// 	fetch("http://localhost:8080/bus", {
+	// 	    method: "POST",
+	// 	    headers: {
+	// 	        "content-type": "application/json"
+	// 	    },
+	// 	    body: JSON.stringify({
+	// 	        "feedback": feedback,
+	// 	        "rating": busType,
+	// 	        "capacity": capacity
+		        
+	// 	    })
+	// 	}).then(response => {
+	// 	    response.json().then(data => {
+	// 	        alert("Route sucessfully Added with ID: " + data.busId);
+	// 	    });
+	// 	})
+
+  }
+</script>

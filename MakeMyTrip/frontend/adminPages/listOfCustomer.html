@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List of Customers</title>
+  <link rel="stylesheet" href="../adminPagesCSS/lifeOfCustomer.css">
+</head>
+<body>
+
+  <div>
+    <h2>Customer Information</h2>
+
+  <table class="table-body">
+    <thead class="thead">
+      <tr>
+        <th id="id">ID</th>
+        <th id="name">Name</th>
+        <th id="email">Email</th>
+        <th id="address">Address</th>
+        <th id="phone">Phone Number</th>
+        <th id="feedback">Feedbacks</th>
+        <th id="hotel_id">Hotel ID</th>
+        <th id="booking_id">Booking ID</th>
+      </tr>
+    </thead>
+    <tbody class="tbody" id="table-body">
+      <tr id="tv">
+
+        <!-- <td id="row_id">1</td>
+        <td id="row_name">dummy</td>
+        <td id="row_email">jdummy@example.com</td>
+        <td id="row_address">dummy</td>
+        <td id="row_phone">dummy</td>
+        <td id="row_feedback"><a href="./feedback.html">View Feedbacks</a></td>
+        <td id="row_hotel_id">101</td>
+        <td id="row_booking_id">201</td> -->
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</body>
+</html>
+
+<script>
+
+let url = "http://localhost:8080/cs-con/customers"
+fetchData(url);
+let main_section = document.getElementById("table-body")
+let global = [];
+
+function fetchData(url) {
+
+  let id = document.getElementById("row_id");
+  let name = document.getElementById("row_name");
+  let email = document.getElementById("row_email");
+  // let password = document.getElementById("row_password");
+  let address = document.getElementById("row_address");
+  let phone = document.getElementById("row_phone");
+  let feedback = document.getElementById("row_feedback");
+  let hotel_id = document.getElementById("row_hotel_id");
+  let booking_id = document.getElementById("row_booking_id");
+
+
+let employeeTableBody = document.getElementById('table-body');
+    fetch("http://localhost:8080/cs-con/customers").then(response => {
+        response.json().then(data => {
+            // console.log(data);
+            data.forEach(employee => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                  <td id="row_name">${employee.id}</td> 
+                  <td id="row_name">${employee.name}</td>
+                  <td id="row_name">${employee.email}</td>
+                  <td id="row_name">${employee.address}</td>
+                  <td id="row_name">${employee.phoneNumber}</td>
+                  <td id="row_name">${employee= `<a href="./feedback.html">View Feedbacks</a>`}</td>
+                  <td id="row_name">${employee.hotel}</td>
+                  <td id="row_name">${employee.booking}</td>
+        
+              `;
+                employeeTableBody.appendChild(row);
+            })
+        })
+
+    })
+
+}
+
+function displayData(data) {
+  // main_section.innerHTML = null
+
+}
+
+</script>

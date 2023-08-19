@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Details</title>
+  <link rel="stylesheet" href="../css/travelList.css">
+</head>
+
+<body>
+  <div>
+    <h1>Travel Agency Details</h1>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th class="table-header" id="travel-id">Travel ID</th>
+          <th class="table-header" id="address">Address</th>
+          <th class="table-header" id="agent-name">Agent Name</th>
+          <th class="table-header" id="phone-number">Phone Number</th>
+          <th class="table-header" id="travels-name">Travels Name</th>
+          <th class="table-header" id="package-id">Package ID</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+<script>
+  fetch('https://localhost:8080/getTravels/')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error fetching data: ' + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    const tableBody = document.querySelector('tbody');
+    data.forEach(travel => {
+      const row = document.createElement('tr');
+      const travelIdCell = document.createElement('td');
+      travelIdCell.textContent = travel.id;
+      const addressCell = document.createElement('td');
+      addressCell.textContent = travel.address;
+      const agentNameCell = document.createElement('td');
+      agentNameCell.textContent = travel.agentName;
+      const phoneNumberCell = document.createElement('td');
+      phoneNumberCell.textContent = travel.phoneNumber;
+      const travelsNameCell = document.createElement('td');
+      travelsNameCell.textContent = travel.travelsName;
+      const packageIdCell = document.createElement('td');
+      packageIdCell.textContent = travel.packageId;
+      row.appendChild(travelIdCell);
+      row.appendChild(addressCell);
+      row.appendChild(agentNameCell);
+      row.appendChild(phoneNumberCell);
+      row.appendChild(travelsNameCell);
+      row.appendChild(packageIdCell);
+      tableBody.appendChild(row);
+    });
+  })
+  .catch(error => console.log(error));
+
+</script>

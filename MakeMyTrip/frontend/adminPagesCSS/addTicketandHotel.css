@@ -1,0 +1,59 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    overflow-y: hidden;
+    background:  #00b4db;
+  }
+
+
+.hotel-form {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .hotel-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  
+  form label {
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  form input[type="text"],
+  form select,
+  form textarea {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  form input[type="number"] {
+    width: 20%;
+  }
+  
+  form input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #45a049;
+  }

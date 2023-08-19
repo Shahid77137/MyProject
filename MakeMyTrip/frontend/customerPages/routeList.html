@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Route Details Table</title>
+	<link rel="stylesheet" href="../css/routeList.css">
+</head>
+
+<body>
+	<div class="table">
+		<h2>Route Details</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th id="route_id">ID</th>
+					<th id="arrival_time">Arrival Time</th>
+					<th id="departure_time">Departure Time</th>
+					<th id="doj">Date of Journey</th>
+					<th id="fare">Fare</th>
+					<th id="pickup_point">Pickup Point</th>
+					<th id="route_from">Route From</th>
+					<th id="route_to">Route To</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
+<script>
+	// Select the table body element
+	const tableBody = document.querySelector('tbody');
+
+	var myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+
+	var raw = "";
+
+	var requestOptions = {
+		method: 'GET',
+		headers: myHeaders,
+		redirect: 'follow'
+	};
+
+	// Make a GET request to the API endpoint
+	fetch('https://localhost:8080/routes', requestOptions)
+		.then(response => response.json())
+		.then(data => {
+			// Iterate over the data and create a new row for each item
+			data.forEach(route => {
+				const newRow = `
+        <tr>
+          <td class="route_id">${route.id}</td>
+          <td class="arrival_time">${route.arrival_time}</td>
+          <td class="departure_time">${route.departure_time}</td>
+          <td class="doj">${route.date_of_journey}</td>
+          <td class="fare">${route.fare}</td>
+          <td class="pickup_point">${route.pickup_point}</td>
+          <td class="route_from">${route.route_from}</td>
+          <td class="route_to">${route.route_to}</td>
+        </tr>
+      `;
+				// Add the new row to the table body
+				tableBody.innerHTML += newRow;
+			});
+		})
+		.catch(error =>
+			// console.log(error.type)
+			alert(error.message)
+		);
+
+</script>

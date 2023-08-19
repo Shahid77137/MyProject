@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Ticket or Booking Status</title>
+  <link rel="stylesheet" href="../adminPagesCSS/bookingStatus.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="column">
+      <h2>Change Ticket Status</h2>
+      <form>
+        <label for="ticket-status">Ticket Status:</label>
+        <select id="ticket-status" name="ticket-status">
+          <option value="confirm">Confirm</option>
+          <option value="cancelled">Cancelled</option>
+        </select><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="column">
+      <h2>Change Booking Status</h2>
+      <form>
+        <label for="booking-status">Booking Status:</label>
+        <select id="booking-status" name="booking-status">
+          <option value="confirm">Confirm</option>
+          <option value="cancelled">Cancelled</option>
+        </select><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
